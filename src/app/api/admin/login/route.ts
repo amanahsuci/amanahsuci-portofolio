@@ -8,12 +8,10 @@ export async function POST(req: NextRequest) {
     }
 
     const response = NextResponse.json({ success: true })
-    response.cookies.set("admin_token", process.env.ADMIN_PASSWORD!, {
+    response.cookies.set("auth", "true", {
         httpOnly: true,
-        maxAge: 60 * 60 * 24, 
-        secure: true,
-        sameSite: "lax",
-        path: "/",
+        maxAge: 60 * 60 * 24,
+        path: '/',
     })
 
     return response
